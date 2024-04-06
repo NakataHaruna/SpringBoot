@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${user.name} ]]の[[ ${title} ]]</h1>
+    
+    <a href="/items/create"><input type="submit" value="新規出品"></a>
+    <ul th:each="item : ${items}">
+    	<li class="list_style">
+            <a th:href="@{/items/{id} (id=${item.id})}">
+            	<img class="item" th:src="@{/images/{image} (image=${item.image})}">
+            </a>
+            [[ ${item.description} ]]<br>
+            商品名:[[ ${item.name} ]]
+            [[ ${item.price} ]]円<br>
+            
+            カテゴリ[[ ${item.category.name} ]]([[ ${#temporals.format(item.createdAt, 'yyyy-MM-dd hh:mm:ss')} ]])<br>
+            [[ ${item.isSoldOut ? "売り切れ" : "出品中"} ]]
+            <a th:href="@{/items/{id}/update (id=${item.id})}">[編集]</a>
+            <a th:href="@{/items/{id}/imageUpdate (id=${item.id})}">[画像を変更]</a>
+	        <form method="POST" th:action="@{/items/delete/{id} (id=${item.id})}">
+	    		<input type="submit" value="削除">
+	    	</form>
+        </li>
+       	
+    </ul>
+    <p th:if="${items.size == 0}">出品している商品はありません。</p>
+    
+    
+</div>
+</html>

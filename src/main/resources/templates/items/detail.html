@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org">
+        <div th:fragment="main">
+            <p>[[ ${message} ]]</p>  
+            <h1>[[ ${title} ]]</h1>
+            
+            <th:block th:if="${item != null}"> 
+                <dl>
+                    <dt>商品名</dt>
+                    <dd>[[ ${item.name} ]]</dd>
+                    <dt>画像</dt>
+                    <dt><img class="item" th:src="@{/images/{image} (image=${item.image})}"></dt>
+                    <dt>カテゴリ</dt>
+                    <dd>[[ ${item.category.name} ]]</dd>
+                    <dt>価格</dt>
+                    <dd>[[ ${item.price} ]]</dd>
+                    <dt>説明</dt>
+                    <dd>[[ ${item.description} ]]</dd>
+                </dl>
+                
+                <a th:href="@{/items/{id}/confirm (id=${item.id})}">
+                    <input type="submit" value="購入する" >
+                </a>
+            </th:block> 
+            <p th:if="${item == null}">この商品は存在しません</p>
+        </div>
+        </html>

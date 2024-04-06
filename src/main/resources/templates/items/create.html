@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <h2>商品追加フォーム</h2>
+    <form th:action="@{/items/create}" enctype="multipart/form-data" th:object="${itemCreateForm}" method="post">
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}"></span>
+            </li>
+        </ul>
+        <p>
+            <label for="name">商品名: </label><br>
+            <input type="text" id="name" th:field="*{name}" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="description">商品説明: </label><br>
+            <input class="text_size" type="text" id="description" th:field="*{description}" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="price">価格: </label><br>
+            <input type="text" id="price" th:field="*{price}" autofocus="autofocus" >
+        </p>
+        <p>
+            
+            <label for="category_id">カテゴリー: </label><br>
+			<select th:field="*{category}">
+				<option th:each="category:${categories}" th:value="${category.id}">[[${category.name}]]</option>
+			</select>
+
+        </p>
+        <p>
+            <label for="image">画像を選択: </label>
+            <input type="file" id="image" th:field="*{image}" >
+        </p>
+ 
+        <p><input type="submit" value="出品" /></p>
+    </form>
+</div>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<div th:fragment="loggedInHeader">
+    <header>
+        <ul class="header_nav">
+        <li>
+            <a class="text_style" href="/items/">
+                Market
+            </a>
+        </li>
+        <li>
+        	こんにちは、[[ ${user.name} ]]さん!
+        </li>
+        <li>
+            <a class="text_style" th:href="@{/users/{id} (id=${user.id})}">プロフィール</a>
+        </li>
+        <li>
+            <a class="text_style" th:href="@{/users/detail/{id} (id=${user.id})}">お気に入り一覧</a>
+        </li>
+        <li>
+            <a class="text_style" th:href="@{/users/{id}/exhibitions (id=${user.id})}">出品商品一覧</a>
+        </li>
+        <li>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">ログアウト</button>
+            </form>
+        </li>
+        </ul>
+    </header>
+</div>
+ 
+<div th:fragment="notLoggedInHeader">
+    <header>
+        <ul class="header_nav">
+            <li>
+            <a href="/users/sign_up">
+                ユーザー登録
+            </a>
+        </li>
+        <li>
+            <a href="/users/login">
+                ログイン
+            </a>
+        </li>
+        </ul>
+    </header>
+</div>
+ 
+</html>

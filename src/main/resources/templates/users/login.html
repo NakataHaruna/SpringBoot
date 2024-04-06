@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <form th:action="@{/login}" method="post">
+    	<ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">エラー</span>
+            </li>
+        </ul>
+        <div th:if="${param.error}">
+        	<p>メールアドレスまたはパスワードが間違っています。</p>
+        </div>
+        <p>
+            <label for="email">メールアドレス: </label><br>
+            <input type="email" id="email" name="email" >
+        </p>
+        <p>
+	        <label for="password">パスワード: </label><br>
+	        <input type="password" id="password" name="password" >
+        </p>
+        <input type="submit" value="ログイン">
+    </form>
+</div>
+</html>

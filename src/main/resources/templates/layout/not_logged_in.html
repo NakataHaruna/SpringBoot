@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/styles.css">
+<title th:text="${title} ?: _"></title>
+</head>
+<body>
+    <div id="header" th:replace="~{layout/header :: notLoggedInHeader}"></div>
+    <main>
+        <div id="main" th:include="__${main}__"></div>
+    </main>
+</body>

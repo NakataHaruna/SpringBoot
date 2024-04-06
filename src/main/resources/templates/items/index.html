@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    
+    <a class="text_style" th:href="@{/items/create/}">新規出品</a>
+    <ul th:each="item : ${items}">
+    	<li class="list_style">
+            <a th:href="@{/items/{id} (id=${item.id})}">
+            	<img class="item" th:src="@{/images/{image} (image=${item.image})}">
+            </a>
+            [[ ${item.description} ]]<br>
+            商品名:[[ ${item.name} ]]
+            <div>[[ ${item.price} ]]円</div>
+            
+            <form method="post" th:action="@{/items/toggleLike/{id} (id=${item.id})}">
+				<button type="submit">[[ ${item.likedUsers.contains(user) ? '★' : '☆'} ]]</button>
+			</form>
+			カテゴリ:[[ ${item.category.name} ]]([[ ${#temporals.format(item.createdAt, 'yyyy-MM-dd hh:mm:ss')} ]])<br>
+			[[ ${item.isSoldOut ? "売り切れ" : "出品中"} ]]
+        </li>
+    </ul>
+    <p th:if="${items.size == 0}">商品はありません。</p>
+</div>
+</html>

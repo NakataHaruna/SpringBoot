@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <dl>
+    	<dt>商品名</dt>
+    	<dd>[[ ${item.name} ]]</dd>
+    	<dt>画像</dt>
+    	<dt><img class="item" th:src="@{/images/{image} (image=${item.image})}"></dt>
+    	<dt>カテゴリ</dt>
+    	<dd>[[ ${item.category.name} ]]</dd>
+    	<dt>価格</dt>
+    	<dd>[[ ${item.price} ]]</dd>
+    	<dt>説明</dt>
+    	<dd>[[ ${item.description} ]]</dd>
+    </dl>
+    <form method="post" th:action="@{/items/addcart/{id} (id=${item.id})}" >
+    	<input type="submit" value="内容を確認し、購入する" >
+    </form>
+</div>
+</html>

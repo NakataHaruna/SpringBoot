@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>ご購入ありがとうございました。</h1>
+    <dl>
+    	<dt>商品名</dt>
+    	<dd>[[ ${item.name} ]]</dd>
+    	<dt>画像</dt>
+    	<dt><img class="item" th:src="@{/images/{image} (image=${item.image})}"></dt>
+    	<dt>カテゴリ</dt>
+    	<dd>[[ ${item.category.name} ]]</dd>
+    	<dt>価格</dt>
+    	<dd>[[ ${item.price} ]]</dd>
+    	<dt>説明</dt>
+    	<dd>[[ ${item.description} ]]</dd>
+    </dl>
+    
+    <a class="text_style" th:href="@{/items/}">トップに戻る</a>
+</div>
+</html>

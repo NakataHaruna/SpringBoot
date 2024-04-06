@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/users/updateProfile/{id} (id=${user.id})}" th:object="${profileEditForm}">
+    	<ul>
+			<li th:each="error : ${#fields.detailedErrors()}">
+				<span th:text="${error.message}"></span>
+			</li>
+		</ul>
+    
+	    <p>
+		    <label for="name">名前: </label><br>
+		    <input type="text"  th:field="*{name}" autofocus="autofocus" >
+	    </p>
+	    <p>
+		    <label for="profile">プロフィール: </label><br>
+		    <input class="text_size" type="text"  th:field="*{profile}" autofocus="autofocus" >
+	    </p>
+	    <p><input type="submit" value="更新"></p>
+    </form>
+</div>
+</html>

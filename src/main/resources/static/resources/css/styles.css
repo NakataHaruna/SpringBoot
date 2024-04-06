@@ -1,0 +1,36 @@
+.header_nav {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+.header_nav li {
+    margin-right: 30px;
+}
+
+.item {
+	width: 200px;
+}
+
+.list_style {
+	list-style: none;
+}
+
+.text_style {
+	text-decoration: none;
+}
+
+.text_size {
+	height: 150px;
+	width: 300px;
+}
+
+label {
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+select {
+    font-size: 0.9rem;
+    padding: 2px 5px;
+}

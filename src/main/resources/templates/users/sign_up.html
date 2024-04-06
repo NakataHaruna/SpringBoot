@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <h1>[[ ${title} ]]</h1>
+    
+    <form th:action="@{/users/sign_up}" th:object="${signUpForm}" method="post">
+        <ul>
+            <li th:each="error : ${#fields.detailedErrors()}">
+                <span th:text="${error.message}">エラー</span>
+            </li>
+        </ul>
+        <p>
+            <label for="name">ユーザー名: </label><br>
+            <input type="text" id="name" name="name" autofocus="autofocus" >
+        </p>
+        <p>
+            <label for="email">メールアドレス: </label><br>
+            <input type="email" id="email" name="email" >
+        </p>
+        <p>
+            <label for="password">パスワード: </label><br>
+            <input type="password" id="password" name="password" >
+        </p>
+        <p>
+            <label for="password">パスワード(確認用): </label><br>
+            <input type="password" id="ConfirmPassword" name="ConfirmPassword" >
+        </p>       
+       
+        <p><input type="submit" value="登録"></p>
+    </form>
+</div>
+</html>
